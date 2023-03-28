@@ -15,7 +15,7 @@ const JudgeModel = {
   },
   totalFund: {
     type: Number,
-    default: 2000000
+    default: 5000000
   },
   teamList: {
     type: Array
