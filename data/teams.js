@@ -115,37 +115,15 @@ exports.teamList = [
     history: "",
   },
 ]
+const password = ['qires', 'qieos', 'agags', 'agase', 'asdfe', 'asdde', 'asdfd', 'asfda', 'rfdde', 'wtcse', 'wevce', 'wetfe', 'aseed', 'qefds', 'asfed', 'asdfe', 'asdfe', 'asdfe', 'asdes', 'asded']
 
-exports.judgeList = [
-  {
-    login_id: "one",
-    password: "one",
-    teamList: this.teamList
-  },
-  {
-    login_id: "two",
-    password: "two",
-    teamList: this.teamList
-  },
-  {
-    login_id: "three",
-    password: "three",
-    teamList: this.teamList
-  },
-  {
-    login_id: "four",
-    password: "four",
-    teamList: this.teamList
-  },
-  {
-    login_id: "five",
-    password: "five",
-    teamList: this.teamList
-  },
+const x = [];
+for(let i=1; i<=20; i++) {
+  let obj = {};
+  obj.login_id = "judge" + i;
+  obj.password = password[i-1];
+  obj.teamList = this.teamList;
+  x.push(obj);
+}
 
-  {
-    login_id: "six",
-    password: "six",
-    teamList: this.teamList
-  },
-]
+exports.judgeList = x;

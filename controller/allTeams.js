@@ -37,7 +37,7 @@ exports.updateTotalTeamsFund = async (req, res) => {
       obj.name = holder.allTeams[i].name;
       obj.history = holder.allTeams[i].history + action + " ,";
       if(obj.name === name) {
-        if(action == 'decrease') {
+        if(action == 'decrease' && holder.allTeams[i].fund-5000 > 0) {
           obj.fund = holder.allTeams[i].fund - 5000;
           console.log(obj);
         } else if(action == 'increase') {

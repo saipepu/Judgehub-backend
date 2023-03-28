@@ -12,7 +12,7 @@ exports.createJudge = async(req, res) => {
   } catch(err) {
     return res.status(400).json({ success: false, error: err + 'error reseting'})
   }
-
+  console.log(judgeList)
   for(let i=0; i<judgeList.length; i++) {
     let judge = new Judge();
     if(judge) {
