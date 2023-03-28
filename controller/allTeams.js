@@ -37,11 +37,11 @@ exports.updateTotalTeamsFund = async (req, res) => {
       obj.name = holder.allTeams[i].name;
       if(obj.name === name) {
         obj.history = holder.allTeams[i].history + action + " ,";
-        if(action == 'decrease' && holder.allTeams[i].fund-5000 > 0) {
-          obj.fund = holder.allTeams[i].fund - 5000;
+        if(action == 'decrease' && holder.allTeams[i].fund-500000 > 0) {
+          obj.fund = holder.allTeams[i].fund - 500000;
           console.log(obj);
         } else if(action == 'increase') {
-          obj.fund = holder.allTeams[i].fund + 5000;
+          obj.fund = holder.allTeams[i].fund + 500000;
           console.log(obj);
         }
         checkName = true;

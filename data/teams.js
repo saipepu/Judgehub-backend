@@ -115,7 +115,7 @@ exports.teamList = [
     history: "",
   },
 ]
-const password = ['qires', 'qieos', 'agags', 'agase', 'asdfe', 'asdde', 'asdfd', 'asfda', 'rfdde', 'wtcse', 'wevce', 'wetfe', 'aseed', 'qefds', 'asfed', 'asdfe', 'asdfe', 'asdfe', 'asdes', 'asded']
+const password = ['qires', 'qieos', 'agags', 'agase', 'asdfe', 'asdde', 'asdfd', 'asfda', 'rfdde', 'wtcse', 'wevce', 'wetfe', 'aseed', 'qefds', 'asfed', 'asdfg', 'asdfi', 'asasd', 'asdes', 'asded']
 
 const x = [];
 for(let i=1; i<=20; i++) {
