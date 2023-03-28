@@ -65,6 +65,7 @@ exports.login = async(req, res) => {
 }
 
 exports.judgeById = async(req, res, next, id) => {
+  console.log('judgeBYId')
   try {
     const judge = await Judge.findOne({ _id: id})
     req.profile = judge
@@ -75,7 +76,8 @@ exports.judgeById = async(req, res, next, id) => {
 }
 
 exports.updateTeamFund = async(req, res) => {
-  const { teamName, fund, totalFund } = req.body;
+  const { teamName, fund, totalFund, action } = req.body;
+  console.log(action);
   let judge = req.profile;
   try {
     if(judge) {
@@ -85,7 +87,8 @@ exports.updateTeamFund = async(req, res) => {
         }
       }
     }
-    const data = await Judge.findOneAndUpdate({ _id: judge._id }, { teamList: judge.teamList, totalFund: totalFund})
+    let history = judge.transactionHistory + ", " + action + " " + teamName + " 500K - " + new Date().getDate() + " - " + new Date().getHours() + "hr " + new Date().getMinutes() + "min " + new Date().getSeconds() + "sec ";
+    const data = await Judge.findOneAndUpdate({ _id: judge._id }, { teamList: judge.teamList, totalFund: totalFund, transactionHistory: history})
     return res.status(200).json({ success: true, message: data })
   } catch(err) {
     console.log(err)
@@ -98,5 +101,21 @@ exports.getOne = async (req, res) => {
     return res.status(200).json({ success: true, message: req.profile})
   } else {
     return res.status(400).json({ success: false, error: 'user not found try to refresh please'})
+  }
+}
+
+exports.getHistory = async(req, res) => {
+  console.log('geting history')
+  try {
+    const allJudges = await Judge.find().exec();
+    let hist = "";
+    for(let i=0; i<allJudges.length; i++) {
+      if(allJudges[i].transactionHistory != undefined && allJudges[i].transactionHistory != "")
+      hist += allJudges[i].transactionHistory;
+    }
+    return res.status(200).json({ success: true, history: hist})
+  } catch(err) {
+    console.log(err);
+    return res.status(400).json({ success: false, error: err})
   }
 }

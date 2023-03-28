@@ -4,21 +4,22 @@ const judge = require('../models/judge');
 
 exports.getAll = async (req, res) => {
   try {
-    const result = await AllTeams.find().exec();
     const allJudges = await judge.find().exec();
-    let arr = result[0].allTeams;
-    // console.log(result[0].allTeams);
-    for(let z=0; z<arr; z++) {
-      for(let i=0; i<allJudges.length; i++) {
-        for(let j=0; j<allJudges[i].teamList.length; j++) {
-          if(arr[z].name == allJudges[i].teamList[j].name) {
-            arr[z].fund +=  allJudges[i].teamList[j].fund
-          }
+    let arr2 = []
+      for(let i=0; i<teamList.length; i++) {
+        let sum = 0;
+        let obj = {};
+        for(let j=0; j<allJudges.length; j++) {
+          sum += allJudges[j].teamList[i].fund;
+          obj.name = allJudges[j].teamList[i].name;
         }
+        obj.fund = sum;
+        arr2.push(obj);
       }
-    }
-    return res.status(200).json({ success: true, message: arr})
-  } catch(err) {
+
+      return res.status(200).json({ success: true, message: arr2 })
+    } catch(err) {
+    console.log(err);
     return res.status(400).json({ success: false, error: err})
   }
 }
@@ -51,10 +52,8 @@ exports.updateTotalTeamsFund = async (req, res) => {
         obj.history = holder.allTeams[i].history + action + " ,";
         if(action == 'decrease' && holder.allTeams[i].fund-500000 > 0) {
           obj.fund = holder.allTeams[i].fund - 500000;
-          console.log(obj);
         } else if(action == 'increase') {
           obj.fund = holder.allTeams[i].fund + 500000;
-          console.log(obj);
         }
         checkName = true;
       } else {
@@ -69,31 +68,9 @@ exports.updateTotalTeamsFund = async (req, res) => {
 
     const data = await AllTeams.findOneAndUpdate({ _id: id}, { allTeams: updatedTeamsList })
 
-    console.log('updated')
+    console.log('getTotalTeamsFund')
     return res.status(200).json({ success: true, message: data })
   } catch(err) {
     return res.status(400).json({ success: false, error: err })
   }
-  // try {
-  //   const result = await AllTeams.find().exec();
-  //   const allJudges = await judge.find().exec();
-  //   let arr = result[0].allTeams;
-  //   for(let z=0; z<arr; z++) {
-  //     for(let i=0; i<allJudges.length; i++) {
-  //       for(let j=0; j<allJudges[i].teamList.length; j++) {
-  //         if(arr[z].name == allJudges[i].teamList[j].name) {
-  //           arr[z].name = arr[z].name
-  //           arr[z].fund +=  allJudges[i].teamList[j].fund
-  //         }
-  //       }
-  //     }
-  //   }
-  //   let holder = result[0];
-  //   let id = holder._id;
-  //   const data = await AllTeams.findOneAndUpdate({ _id: id}, { allTeams: arr })
-
-  //   return res.status(200).json({ success: true, message: data})
-  // } catch(err) {
-  //   return res.status(400).json({ success: false, error: err})
-  // }
 }

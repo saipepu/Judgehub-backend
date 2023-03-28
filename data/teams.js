@@ -123,6 +123,7 @@ for(let i=1; i<=20; i++) {
   obj.login_id = "judge" + i;
   obj.password = password[i-1];
   obj.teamList = this.teamList;
+  obj.transactionHistory = "";
   x.push(obj);
 }
 

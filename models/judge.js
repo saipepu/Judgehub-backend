@@ -19,6 +19,9 @@ const JudgeModel = {
   },
   teamList: {
     type: Array
+  },
+  transactionHistory: {
+    type: String
   }
 }
 

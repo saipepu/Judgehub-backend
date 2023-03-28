@@ -1,5 +1,5 @@
 const express = require('express');
-const { login, createJudge, getAll, judgeById, updateTeamFund, getOne } = require('../controller/judge');
+const { login, createJudge, getAll, judgeById, updateTeamFund, getOne, getHistory } = require('../controller/judge');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -10,6 +10,7 @@ router.put('/updateTeamFund/:judgeById', updateTeamFund)
 
 router.get('/createJudges', createJudge)
 router.get('/getAll', getAll)
+router.get('/getHistory', getHistory)
 router.get('/:judgeById', getOne)
 
 router.param('judgeById', judgeById)
