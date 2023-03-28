@@ -77,7 +77,6 @@ exports.judgeById = async(req, res, next, id) => {
 
 exports.updateTeamFund = async(req, res) => {
   const { teamName, fund, totalFund } = req.body;
-  console.log(totalFund, teamName);
   let judge = req.profile;
   try {
     if(judge) {
@@ -90,7 +89,7 @@ exports.updateTeamFund = async(req, res) => {
     const data = await Judge.findOneAndUpdate({ _id: judge._id }, { teamList: judge.teamList, totalFund: totalFund})
     return res.status(200).json({ success: true, message: data })
   } catch(err) {
-    console.log()
+    console.log(err)
     return res.status(400).json({ success: false, error: err})
   }
 }
