@@ -50,7 +50,6 @@ const start = async () => {
   // const collection = db.collection("Judge");
   const db = client.db("JudgeHub");
   const collection = db.collection("allteams");
-  console.log(collection);
   io.on('connection', (socket) => {
     console.log('one client connected')
     
