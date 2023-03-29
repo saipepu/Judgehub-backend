@@ -121,7 +121,8 @@ const x = [];
 for(let i=1; i<=20; i++) {
   let obj = {};
   obj.login_id = "judge" + i;
-  obj.password = password[i-1];
+  // obj.password = password[i-1];
+  obj.password = "admin"
   obj.teamList = this.teamList;
   obj.transactionHistory = "";
   x.push(obj);
