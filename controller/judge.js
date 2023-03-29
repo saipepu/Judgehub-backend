@@ -87,7 +87,7 @@ exports.updateTeamFund = async(req, res) => {
         }
       }
     }
-    let history = judge.transactionHistory + ", " + action + " " + teamName + " 500K - " + new Date().getDate() + " - " + new Date().getHours() + "hr " + new Date().getMinutes() + "min " + new Date().getSeconds() + "sec ";
+    let history = judge.transactionHistory + "," + teamName + " " + judge.login_id + " " + action + " 500k " + new Date().getDate() + "-" + new Date().getHours() + "hr-" + new Date().getMinutes() + "min-" + new Date().getSeconds() + "sec ";
     const data = await Judge.findOneAndUpdate({ _id: judge._id }, { teamList: judge.teamList, totalFund: totalFund, transactionHistory: history})
     return res.status(200).json({ success: true, message: data })
   } catch(err) {
