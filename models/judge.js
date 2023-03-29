@@ -22,6 +22,9 @@ const JudgeModel = {
   },
   transactionHistory: {
     type: String
+  },
+  logHistory: {
+    type: String
   }
 }
 

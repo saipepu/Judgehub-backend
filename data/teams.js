@@ -125,6 +125,7 @@ for(let i=1; i<=20; i++) {
   obj.password = "admin"
   obj.teamList = this.teamList;
   obj.transactionHistory = "";
+  obj.logHistory = "";
   x.push(obj);
 }
 

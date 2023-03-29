@@ -50,9 +50,10 @@ exports.login = async(req, res) => {
         judge = Registered[i];
       }
     }
+    console.log('login')
     if(!found) return res.status(200).json({ success: false, error: 'Not Registered Yet'})
-
-    await Judge.findOneAndUpdate({ _id: judge._id}, {name: name})
+    logHistory = judge.logHistory + ", logged_in " + new Date().getDate() + "-" + new Date().getHours() + "hr-" + new Date().getMinutes() + "min-" + new Date().getSeconds() + "sec / as" + name;
+    await Judge.findOneAndUpdate({ _id: judge._id}, {name: name, logHistory: logHistory})
 
     const token = jwt.sign({ _id: judge._id }, 'SECRET')
     res.cookie('ddi_judge_token', token, { expire: new Date() + 9999 });
