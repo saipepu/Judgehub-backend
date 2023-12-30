@@ -115,14 +115,14 @@ exports.teamList = [
     history: "",
   },
 ]
-const password = ['qires', 'qieos', 'agags', 'agase', 'asdfe', 'asdde', 'asdfd', 'asfda', 'rfdde', 'wtcse', 'wevce', 'wetfe', 'aseed', 'qefds', 'asfed', 'asdfg', 'asdfi', 'asasd', 'asdes', 'asded']
+const password = ['qires', 'qieos', 'agags', 'agase', 'asdfe', 'asdde', 'asdfd', 'asfda', 'rfdde', 'wtcse', 'wevce', 'wetfe', 'aseed', 'qefds', 'asfed', 'asdfg', 'asdfi', 'asasd', 'asdes', 'asded', 'pepu']
 
 const x = [];
-for(let i=1; i<=20; i++) {
+for(let i=1; i<=21; i++) {
   let obj = {};
   obj.login_id = "judge" + i;
-  // obj.password = password[i-1];
-  obj.password = "admin"
+  obj.password = password[i-1];
+  // obj.password = "admin"
   obj.teamList = this.teamList;
   obj.transactionHistory = "";
   obj.logHistory = "";

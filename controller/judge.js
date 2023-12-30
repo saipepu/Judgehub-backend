@@ -31,6 +31,15 @@ exports.createJudge = async(req, res) => {
 exports.getAll = async(req, res) => {
   try {
     const result = await Judge.find().exec();
+    console.log('==============================')
+    for(let i=0; i<result.length; i++) {
+      let totalBank = 5000000
+      let used = 0;
+      for(let j=0; j<result[i].teamList.length; j++) {
+          used += result[i].teamList[j].fund;
+      }
+      console.log(result[i].login_id + " " + result[i].name + ' left -> ', result[i].totalFund, 'used -> ', used);
+    }
     return res.status(200).json({ success: true, message: result })
   } catch(err) {
     return res.status(400).json({ success: false, error: err })
@@ -83,8 +92,14 @@ exports.updateTeamFund = async(req, res) => {
   try {
     if(judge) {
       for(let i=0; i<judge.teamList.length; i++) {
+        let total = 0;
         if(judge.teamList[i].name == teamName) {
           judge.teamList[i].fund = fund
+        }
+        if (action == "Invest") {
+          totalFund -= judge.teamList[i].fund;
+        } else {
+          totalFund += 500000
         }
       }
     }
