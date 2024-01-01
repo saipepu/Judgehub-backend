@@ -1,6 +1,6 @@
 ### Judgehub Backend
 
-This is the backend repo for <a href="https://github.com/saipepu/JudgeHub">Judgehub</a>
+This is the backend repo for <a href="https://github.com/saipepu/JudgeHub-frontend">Judgehub</a>
 
 # This project was
 - build with node and express
